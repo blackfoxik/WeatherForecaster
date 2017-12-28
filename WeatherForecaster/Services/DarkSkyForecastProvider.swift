@@ -48,8 +48,8 @@ extension DarkSkyForecastProvider {
         ) { result in
             switch result {
             case .success(let forecast):
-                let curWeather = self.getCurWeatherFrom(forecast, city: city)
-                var forecasts = self.make(forecast: forecast, city: city)
+                let curWeather = self.makeCurWeather(from: forecast, for: city)
+                var forecasts = self.makeWeatherForecasts(from: forecast, for: city)
                 forecasts.append(curWeather)
                 self.fixDateOfForecastUpdating()
                 completion(forecasts, nil)
@@ -60,7 +60,7 @@ extension DarkSkyForecastProvider {
         }
     }
     
-    private func getCurWeatherFrom(_ forecast: Forecast, city: City) -> WeatherForecast {
+    private func makeCurWeather(from forecast: Forecast,for city: City) -> WeatherForecast {
         let curConditional = WeatherForecast.Conditional(curTemperature: forecast.current?.temperature?.current?.value,
                                                          minTemperature: nil,
                                                          maxTemperature: nil,
@@ -72,9 +72,10 @@ extension DarkSkyForecastProvider {
         return weather
     }
     
-    private func make(forecast: Forecast, city: City) -> [WeatherForecast] {
+    private func makeWeatherForecasts(from forecast: Forecast,for city: City) -> [WeatherForecast] {
         var forecasts = [WeatherForecast]()
         for curDay in (forecast.days?.points)! {
+            if curDay.time.isDateInToday { continue }
             let curConditional = WeatherForecast.Conditional(curTemperature: nil,
                                                              minTemperature: curDay.temperature?.min?.value,
                                                              maxTemperature: curDay.temperature?.max?.value,
@@ -86,9 +87,6 @@ extension DarkSkyForecastProvider {
             let curForecast = WeatherForecast(city: city, date: curDay.time, conditionals: curConditional)
             forecasts.append(curForecast)
         }
-        //crutch
-        //DarkSky inserts current day as forecast
-        forecasts.remove(at: 0)
         return forecasts
     }
 }
