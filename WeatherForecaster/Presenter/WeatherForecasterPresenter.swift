@@ -39,6 +39,7 @@ extension WeatherForecasterPresenter: SelectedCitiesViewObserver {
     }
         
     func fillSelectedCitiesWithSavedForecast() -> Void {
+        persistentDataProvider.deleteOldForecasts()
         if forecastProvider.isLastWeatherForecastUpdatingActual {
             for curCity in listOfSelectedCities {
                 self.persistentDataProvider.getSavedForecastFor(curCity) { savedForecasts in

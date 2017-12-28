@@ -218,13 +218,14 @@ extension CoreDataPersistentDataProvider {
     
     private func deleteOldForecastFromCoreData() -> Void {
         let weatherForecastRequest: NSFetchRequest<CDWeatherForecast> = CDWeatherForecast.fetchRequest()
-        let today = Calendar.current.startOfDay(for: Date())
-        let predicateDate = NSPredicate(format: "\(Keys.CORE_DATA.DATE_ATTRIBUTE_NAME) < %@", today as NSDate)
+        let today =  Date().endOfDay!
+        let predicateDate = NSPredicate(format: "\(Keys.CORE_DATA.DATE_ATTRIBUTE_NAME) <= %@", today as NSDate)
         weatherForecastRequest.predicate = predicateDate
         do {
             let weatherForecastMatches = try context!.fetch(weatherForecastRequest)
             if weatherForecastMatches.count > 0 {
                 for curWeatherForecast in weatherForecastMatches {
+                    if curWeatherForecast.isCurrentWeather && curWeatherForecast.date!.isDateInToday { continue }
                     context?.delete(curWeatherForecast)
                 }
                 saveContext()
@@ -260,6 +261,22 @@ extension Keys {
     }
 }
 
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date? {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)
+    }
+    
+    var isDateInToday: Bool {
+        return Calendar.current.isDateInToday(self)
+    }
+}
 
 
 
