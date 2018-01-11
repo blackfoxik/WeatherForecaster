@@ -13,7 +13,7 @@ class WeatherForecastTableViewController: UITableViewController {
     var city: City?
     var weatherForecastsForShowingToUser: [Int: ForecastForWeatherForecastTableView]?
     var weatherForecastsFromCity: [Int: ForecastForWeatherForecastTableView]?
-    
+    var delegate: ForecastsContainerResizer?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +24,12 @@ class WeatherForecastTableViewController: UITableViewController {
         weatherForecastsFromCity = city?.getWeatherForecastsForView()
         weatherForecastsForShowingToUser = weatherForecastsFromCity
     }
+//    override func viewDidLayoutSubviews() {
+//
+//        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//        print("\(preferredContentSize) \(Date())")
+//        //self.view.sizeToFit()
+//    }
 }
 
 extension WeatherForecastTableViewController {
@@ -64,6 +70,9 @@ extension WeatherForecastTableViewController: UserChangedCountOfDaysForecastHand
         if variant == .max {
             applyVariantMaxDaysForShowing()
         }
+        //ok we need to send new size to container
+        print("SIZE ----------------- \(self.tableView.contentSize.height)")
+        delegate?.apply(self.tableView.contentSize.height)
     }
 }
 

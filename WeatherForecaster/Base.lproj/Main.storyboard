@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="-65" width="375" height="667"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OX-wv-6Ih">
-                                                <rect key="frame" x="0.0" y="66" width="375" height="161"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                                                 <connections>
                                                     <segue destination="hUW-z4-21c" kind="embed" id="Oeo-uF-dDj"/>
                                                 </connections>
@@ -117,14 +117,17 @@
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lij-SK-VYu">
                                                 <rect key="frame" x="0.0" y="383" width="375" height="284"/>
+                                                <color key="backgroundColor" red="0.23137255009999999" green="0.61176472900000001" blue="0.070588238540000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="ofb-CP-ds4"/>
+                                                </constraints>
                                                 <connections>
-                                                    <segue destination="pB9-Gt-tpa" kind="embed" id="744-qg-pBQ"/>
+                                                    <segue destination="pB9-Gt-tpa" kind="embed" identifier="WeatherForecastTableSegue" id="744-qg-pBQ"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="8OX-wv-6Ih" firstAttribute="top" secondItem="D1w-f2-bs0" secondAttribute="top" constant="66" id="A5a-tb-Zs1"/>
+                                            <constraint firstItem="8OX-wv-6Ih" firstAttribute="top" secondItem="D1w-f2-bs0" secondAttribute="top" id="A5a-tb-Zs1"/>
                                             <constraint firstItem="5Y2-Y9-3pW" firstAttribute="leading" secondItem="Lij-SK-VYu" secondAttribute="leading" id="L7w-BH-FoY"/>
                                             <constraint firstItem="8OX-wv-6Ih" firstAttribute="trailing" secondItem="5Y2-Y9-3pW" secondAttribute="trailing" id="PVg-aw-J4T"/>
                                             <constraint firstItem="Lij-SK-VYu" firstAttribute="top" secondItem="D1w-f2-bs0" secondAttribute="top" constant="383" id="QdH-Bb-uX8"/>
@@ -140,16 +143,16 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D1w-f2-bs0" secondAttribute="trailing" id="Gmr-eT-wBo"/>
-                                    <constraint firstItem="D1w-f2-bs0" firstAttribute="top" secondItem="MhC-AO-Qn1" secondAttribute="top" constant="-1" id="P7n-QU-CVr"/>
+                                    <constraint firstItem="D1w-f2-bs0" firstAttribute="top" secondItem="MhC-AO-Qn1" secondAttribute="top" constant="20" symbolic="YES" id="P7n-QU-CVr"/>
                                     <constraint firstAttribute="bottom" secondItem="D1w-f2-bs0" secondAttribute="bottom" constant="1" id="akE-06-Zl2"/>
                                     <constraint firstItem="D1w-f2-bs0" firstAttribute="leading" secondItem="MhC-AO-Qn1" secondAttribute="leading" id="g4n-Y9-3dM"/>
                                     <constraint firstItem="D1w-f2-bs0" firstAttribute="centerX" secondItem="MhC-AO-Qn1" secondAttribute="centerX" id="gVz-ql-NGD"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MhC-AO-Qn1" firstAttribute="leading" secondItem="Try-2F-jbr" secondAttribute="leading" id="5Wz-KL-518"/>
                             <constraint firstItem="MhC-AO-Qn1" firstAttribute="bottom" secondItem="E6l-Z6-TSU" secondAttribute="bottom" id="P4d-qk-dU0"/>
@@ -160,7 +163,10 @@
                     </view>
                     <connections>
                         <outlet property="mainInfoContainerView" destination="8OX-wv-6Ih" id="eAe-YX-54k"/>
+                        <outlet property="scrollView" destination="MhC-AO-Qn1" id="cVE-zK-962"/>
                         <outlet property="summaryContainerView" destination="5Y2-Y9-3pW" id="MY8-KD-Tab"/>
+                        <outlet property="viewForContainers" destination="D1w-f2-bs0" id="5lG-Is-UfR"/>
+                        <outlet property="weatherForecastsContainerHeight" destination="ofb-CP-ds4" id="Sr7-2M-DXM"/>
                         <outlet property="weatherForecastsContainerView" destination="Lij-SK-VYu" id="lq6-sY-Yyx"/>
                     </connections>
                 </viewController>
@@ -216,7 +222,7 @@
         <scene sceneID="WHg-ME-Lh8">
             <objects>
                 <tableViewController id="pB9-Gt-tpa" customClass="WeatherForecastTableViewController" customModule="WeatherForecaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jmz-fq-rd2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jmz-fq-rd2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -347,6 +353,7 @@
                             <outlet property="delegate" destination="pB9-Gt-tpa" id="PX9-Ol-b5O"/>
                         </connections>
                     </tableView>
+                    <size key="freeformSize" width="375" height="284"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHX-kh-uCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,20 +382,20 @@
             <objects>
                 <viewController id="hUW-z4-21c" customClass="MainInfoViewController" customModule="WeatherForecaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ny-bA-rAh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="drD-u8-GWN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="icon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehr-gq-1Es">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="curTemperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHE-hH-M4O">
-                                        <rect key="frame" x="0.0" y="41" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="58" width="375" height="169"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
