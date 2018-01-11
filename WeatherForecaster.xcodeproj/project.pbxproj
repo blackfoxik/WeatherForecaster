@@ -128,6 +128,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A33D3FE2008216000E20CBA /* ForBuiltInCities */ = {
+			isa = PBXGroup;
+			children = (
+				3A30FAD51FEBC3F800974764 /* BuiltInCitiesSourceProviderProtocol.swift */,
+				3A30FAD31FEBC33800974764 /* BuiltInCitiesProviderProtocol.swift */,
+			);
+			path = ForBuiltInCities;
+			sourceTree = "<group>";
+		};
+		3A33D3FF200821E000E20CBA /* ForViews */ = {
+			isa = PBXGroup;
+			children = (
+				3AEE06DA1FF2A0F3002A8AD2 /* WeatherForecastPropertiesAsStringProviderProtocol.swift */,
+				3AEE06D81FF2A0C3002A8AD2 /* WeatherForecastImageProviderProtocol.swift */,
+				3AC34CBB1FEA9A0D0091168B /* SelectedCitiesViewObserverProtocol.swift */,
+				3AC34CB91FEA99C60091168B /* SelectedCitiesViewObservableProtocol.swift */,
+				3AC34CB71FEA998E0091168B /* SelectorCityObserverProtocol.swift */,
+				3AC34CB41FEA97D20091168B /* CitySelectorProviderProtocol.swift */,
+				3A4E62521FF3CA93006DA16B /* UserChangedCountOfDaysForecastHandlerProtocol.swift */,
+				3AEE06D61FF2A077002A8AD2 /* CurrentWeatherForSummaryViewProviderProtocol.swift */,
+				3AEE06D41FF2A04D002A8AD2 /* CityForSelectedCitiesTableViewProviderProtocol.swift */,
+				3AEE06D21FF2A024002A8AD2 /* ForecastsForWeatherForecasTableViewProviderProtocol.swift */,
+				3AEE06D01FF29FEC002A8AD2 /* CurrentWeatherForMainInfoViewProviderProtocol.swift */,
+			);
+			path = ForViews;
+			sourceTree = "<group>";
+		};
+		3A33D400200823B200E20CBA /* BuiltInCities */ = {
+			isa = PBXGroup;
+			children = (
+				3A71C9CE1FEBA5B100C4A40E /* BuiltInCitiesCSVSourceProvider.swift */,
+				3A71C9CC1FEB9EB100C4A40E /* BuiltInCitiesProviderService.swift */,
+			);
+			path = BuiltInCities;
+			sourceTree = "<group>";
+		};
+		3A33D401200823CA00E20CBA /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				3AC34CC71FEAD3DC0091168B /* ReachabilityCheckerProvider.swift */,
+				3AC34CC11FEACBE00091168B /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		3A33D4022008241500E20CBA /* PersistentProvider */ = {
+			isa = PBXGroup;
+			children = (
+				3A6001C21FE7C02400EFE62A /* CoreDataPersistentDataProvider.swift */,
+				3A9054D61FF2F91200A498CD /* CityTranslator.swift */,
+				3A9054D41FF2F8D000A498CD /* WeatherForecastTranslator.swift */,
+			);
+			path = PersistentProvider;
+			sourceTree = "<group>";
+		};
 		3A6001C41FE7C14000EFE62A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,15 +209,11 @@
 		3A6001C61FE7C18700EFE62A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3A71C9CE1FEBA5B100C4A40E /* BuiltInCitiesCSVSourceProvider.swift */,
-				3A71C9CC1FEB9EB100C4A40E /* BuiltInCitiesProviderService.swift */,
-				3AC34CC71FEAD3DC0091168B /* ReachabilityCheckerProvider.swift */,
-				3AC34CC11FEACBE00091168B /* Reachability.swift */,
-				3AFDAE9E1FE6387800D5719C /* GooglePlacesCitySelectorProvider.swift */,
-				3A6001C21FE7C02400EFE62A /* CoreDataPersistentDataProvider.swift */,
-				3A9054D61FF2F91200A498CD /* CityTranslator.swift */,
-				3A9054D41FF2F8D000A498CD /* WeatherForecastTranslator.swift */,
+				3A33D400200823B200E20CBA /* BuiltInCities */,
+				3A33D401200823CA00E20CBA /* Reachability */,
+				3A33D4022008241500E20CBA /* PersistentProvider */,
 				3A6001C01FE6573700EFE62A /* DarkSkyForecastProvider.swift */,
+				3AFDAE9E1FE6387800D5719C /* GooglePlacesCitySelectorProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -170,22 +221,11 @@
 		3AC34CB61FEA97EB0091168B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				3A4E62521FF3CA93006DA16B /* UserChangedCountOfDaysForecastHandlerProtocol.swift */,
+				3A33D3FF200821E000E20CBA /* ForViews */,
+				3A33D3FE2008216000E20CBA /* ForBuiltInCities */,
 				3AEE06DC1FF2A483002A8AD2 /* ReachabilityCheckerProtocol.swift */,
-				3AEE06DA1FF2A0F3002A8AD2 /* WeatherForecastPropertiesAsStringProviderProtocol.swift */,
-				3AEE06D81FF2A0C3002A8AD2 /* WeatherForecastImageProviderProtocol.swift */,
-				3AEE06D61FF2A077002A8AD2 /* CurrentWeatherForSummaryViewProviderProtocol.swift */,
-				3AEE06D41FF2A04D002A8AD2 /* CityForSelectedCitiesTableViewProviderProtocol.swift */,
-				3AEE06D21FF2A024002A8AD2 /* ForecastsForWeatherForecasTableViewProviderProtocol.swift */,
-				3AEE06D01FF29FEC002A8AD2 /* CurrentWeatherForMainInfoViewProviderProtocol.swift */,
-				3A30FAD51FEBC3F800974764 /* BuiltInCitiesSourceProviderProtocol.swift */,
-				3A30FAD31FEBC33800974764 /* BuiltInCitiesProviderProtocol.swift */,
 				3AC34CBF1FEA9A7D0091168B /* PersistentDataProviderProtocol.swift */,
 				3AC34CBD1FEA9A4A0091168B /* ForecastProviderProtocol.swift */,
-				3AC34CBB1FEA9A0D0091168B /* SelectedCitiesViewObserverProtocol.swift */,
-				3AC34CB91FEA99C60091168B /* SelectedCitiesViewObservableProtocol.swift */,
-				3AC34CB71FEA998E0091168B /* SelectorCityObserverProtocol.swift */,
-				3AC34CB41FEA97D20091168B /* CitySelectorProviderProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
